@@ -1,0 +1,238 @@
+
+@mixin horizontal-center($position: relative) {
+  position: $position;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin blue-color {
+  color: blue;
+}
+
+// use with :before or :after psudo classes 
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+// We use this for creating scalable elements (usually images / background images) that maintain a ratio.
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}
+
+//set your fallback font once 
+@mixin font-source-sans($size: false, $colour: false, $weight: false,  $lh: false) {
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    @if $size { font-size: $size; }
+    @if $colour { color: $colour; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}
+
+
+// Placeholder: Set the styling for all placeholder form fields Just put the styles inside the @include input-placeholder { } backets. 
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+// BreakPoints: Place mixin inside of the class/id element you wish to style, put medeia query styles inside brackets and breakpoint will be created. 
+//      Usage:
+//        @include mq( 'tablet', $type: max){
+//					color: $success-color;
+//				}
+
+$breakpoints_mq: (
+    "phone":        401px,
+    "phone-wide":   481px,
+    "phablet":      561px,
+    "tablet-small": 641px,
+    "tablet":       769px,
+    "tablet-wide":  1025px,
+    "desktop":      1249px,
+    "desktop-wide": 1441px
+);
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints_mq, $width) {
+        $width: map_get($breakpoints_mq, $width);
+            @if $type == max {
+                $width: $width - 1px;
+            }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+// Box: quickly and easily set square or rectangle dimensions 
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// Set Opacity and include IE 8 compatability
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity = $opacity-ie); //IE8
+}
+
+// add vendor prefixes quickly and easily
+// use this sort of text for includes   @include prefix('box-sizing', 'border-box', moz webkit);
+@mixin prefix($property, $value, $vendors: webkit moz ms o, $default: true) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  @if $default {
+    #{$property}: #{$value};
+  }
+}
+
+// Gradient Mixin, Specify start color/ end color and orientation, use "vertical" or "horizontal" for orientation
+
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  @if $orientation == 'vertical' {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation == 'horizontal' {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}
+
+// Center element horizontally inside its container
+
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Center element Vertically uses @include prefix
+@mixin center-vertically {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include prefix(transform, translate(-50%, -50%), 'webkit' 'ms');
+}
+
+// clearfix
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Arrows 
+
+@mixin rotate($angle) {
+  -moz-transform: rotate($angle);
+  -ms-transform: rotate($angle);
+  -webkit-transform: rotate($angle);
+  transform: rotate($angle);
+}
+
+@mixin arrow($arrowSize: 20px, $arrowBorderSize: 3px, $arrowBarWidth: 2px, $arrowBarHeight: 25px) {
+  display: inline-block;
+  height: $arrowSize;
+  position: relative;
+  width: $arrowSize;
+
+  &::after {
+    border-bottom-style: solid;
+    border-bottom-width: $arrowBorderSize;
+    border-right-style: solid;
+    border-right-width: $arrowBorderSize;
+    content: '';
+    display: inline-block;
+    height: $arrowSize;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: $arrowSize;
+  }
+
+  // Triangle shape state
+  &.is-triangle::after {
+    border-style: solid;
+    border-width: 0 0 $arrowSize $arrowSize;
+    height: 0;
+    width: 0;
+  }
+  
+  // Check shape state
+  &.is-check::after {
+    width: $arrowSize / 2;
+  }
+
+  // Arrow Bar
+  &.arrow-bar::before {
+    bottom: 1px;
+    content: '';
+    height: $arrowBarHeight;
+    position: absolute;
+    right: .5px;
+    transform-origin: bottom;
+    width: $arrowBarWidth;
+    @include rotate(-45deg);
+  }
+
+  // States
+  &.is-top {
+    @include rotate(270deg);
+  }
+
+  &.is-right {
+    @include rotate(315deg);
+  }
+
+  &.is-bottom {
+    @include rotate(45deg);
+  }
+
+  &.is-left {
+    @include rotate(135deg);
+  }
+   &.is-45 {
+    @include rotate(270deg);
+  }
+}
+
+@mixin arrowColor($color) {
+  &,
+  .arrow {
+    &::after {
+      border-color: $color;
+    }
+
+    &.is-triangle::after {
+      border-color: transparent;
+      border-bottom-color: $color;
+    }
+
+    &::before {
+      background-color: $color;
+    }
+  }
+}
