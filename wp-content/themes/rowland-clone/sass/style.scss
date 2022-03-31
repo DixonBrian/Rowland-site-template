@@ -103,4 +103,12 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 /* responsive media queries
 --------------------------------------------- */
+@import "utilities/custom_mixins";
+
+/* responsive media queries
+--------------------------------------------- */
 @import "utilities/responsive";
+
+/* Custom settings for the Foundation-sites script 
+--------------------------------------------- */
+@import "settings/settings";
