@@ -49,6 +49,15 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	- Alignments
 
 --------------------------------------------------------------*/
+/* Foundation
+----------------------------------------*/
+
+/* Foundation */
+
+@import "../node_modules/foundation-sites/scss/foundation";
+
+@include foundation-everything;
+
 
 // Import variables and mixins.
 @import "abstracts/abstracts";
@@ -109,6 +118,3 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --------------------------------------------- */
 @import "utilities/responsive";
 
-/* Custom settings for the Foundation-sites script 
---------------------------------------------- */
-@import "settings/settings";

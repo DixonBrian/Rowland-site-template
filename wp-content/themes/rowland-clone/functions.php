@@ -140,9 +140,9 @@ add_action( 'widgets_init', 'rowland_clone_widgets_init' );
 function rowland_clone_scripts() {
 	wp_enqueue_style( 'rowland-clone-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'rowland-clone-style', 'rtl', 'replace' );
-
+	wp_enqueue_style( 'palmer-new-main', '/wp-content/themes/rowland-clone/builds/production/css/style.css', array(), _S_VERSION );
 	wp_enqueue_script( 'rowland-clone-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
+    wp_enqueue_script( 'custom-js', '/wp-content/themes/rowland-clone/builds/development/js/custom.js', array(), null, true ); 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
