@@ -31,7 +31,7 @@ proxy = "https://localhost:55003",
 url = 'https://rowland-clone.lndo.site/ ', // Local Development URL for BrowserSync. Change as-needed.
 
     //define working envirnoment and compiling settings. Use developement or production
-    env = 'production';
+    env = 'development';
 
 if (env == 'development') {
     dest = 'builds/development/';
@@ -46,7 +46,7 @@ sassSources = ['sass/style.scss'];
 
 
 function js() {
-    return gulp.src("js/**/*.js")
+    return gulp.src(["./js/**/*.js", "!js/customizer.js"])
         .pipe(concat('custom.js'))
         .pipe(gulp.dest(dest + 'js/'));
 }

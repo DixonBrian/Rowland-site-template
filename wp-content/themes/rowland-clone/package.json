@@ -1,5 +1,5 @@
 {
-  "name": "rowlandcreative",
+  "name": "underscores",
   "version": "1.0.0",
   "description": "Hi. I'm a starter theme called _s, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.",
   "author": "Automattic Theme Team",
@@ -70,14 +70,15 @@
     "compile:rtl": "rtlcss style.css style-rtl.css",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'js/*.js'",
-    "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map"
+    "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock"
   },
   "dependencies": {
+    "@splidejs/splide": "^2.4.21",
     "foundation-sites": "^6.6.3",
+    "gulp": "^4.0.2",
     "gulp-if": "^3.0.0",
     "gulp-uglifycss": "^1.1.0",
     "imagemin": "^7.0.1",
-    "path": "^0.12.7",
     "tslint-stylish": "^2.1.0"
-  },
+  }
 }
