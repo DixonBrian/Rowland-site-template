@@ -178,3 +178,38 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+// Adding custiom headers
+function additional_securityheaders( $headers ) {
+
+    $headers['Referrer-Policy']             = 'no-referrer';
+    $headers['X-Content-Type-Options']      = 'nosniff';
+    $headers['X-XSS-Protection']            = '1; mode=block';
+    $headers['Permissions-Policy']          = 'fullscreen=(self "NEED--TO--CHANGE--TO--SITE--URL"), geolocation=*, camera=()';
+    $headers['X-Frame-Options']             = "SAMEORIGIN";
+    $headers ['Strict-Transport-Security']  = "max-age=31536000";
+  
+  return $headers;
+}
+add_filter( 'wp_headers', 'additional_securityheaders' );
+
+// disable API endpoints to harden site
+add_filter('rest_endpoints', function( $endpoints ) {
+
+    foreach( $endpoints as $route => $endpoint ){
+        if( 0 === stripos( $route, '/wp/' ) ){
+            unset( $endpoints[ $route ] );
+        }
+    }
+
+    return $endpoints;
+});
+
+// Batch Change Canonical URLs
+function change_canonical($url) {
+    global $post;
+         return 'https://NEED--TO--CHANGE--TO--SITE--URL' . $post->post_name;
+    
+}
+add_filter( 'wpseo_canonical', 'change_canonical' ); 
+
