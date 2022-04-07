@@ -205,7 +205,7 @@ add_filter('rest_endpoints', function( $endpoints ) {
     return $endpoints;
 });
 
-// Batch Change Canonical URLs
+// Batch Change Canonical URLs to overwrite Pantheon dev urls
 function change_canonical($url) {
     global $post;
          return 'https://NEED--TO--CHANGE--TO--SITE--URL' . $post->post_name;
@@ -213,3 +213,10 @@ function change_canonical($url) {
 }
 add_filter( 'wpseo_canonical', 'change_canonical' ); 
 
+// Change OG:url to over write Pantheon dev urls
+add_filter( 'wpseo_opengraph_url', 'my_opengraph_url' );
+
+function my_opengraph_url( $url ) {
+    global $post;
+        return 'https://NEED--TO--CHANGE--TO--SITE--URL/' . $post->post_name;
+}
