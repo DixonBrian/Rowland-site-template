@@ -20,7 +20,7 @@
     "@wordpress/scripts": "^12.1.0",
     "browser-sync": "^2.26.12",
     "browserify": "^16.5.2",
-    "dir-archiver": "^1.1.1",g
+    "dir-archiver": "^1.1.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-browserify": "^0.5.1",
