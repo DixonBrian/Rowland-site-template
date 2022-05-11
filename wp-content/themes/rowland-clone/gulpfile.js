@@ -1,6 +1,6 @@
 
 const gulp = require('gulp'),
-    sass = require('gulp-sass')(require('sass'));
+    sass = require('gulp-sass'),
     sourcemaps = require("gulp-sourcemaps"),
     browserSync = require('browser-sync').create();
 concat = require("gulp-concat"),
@@ -9,7 +9,7 @@ sass.compiler = require('node-sass'),
     gutil = require('gulp-util'),
     browserify = require('gulp-browserify'),
     stylish = require('jshint-stylish'),
-    jshint = require('gulp-jshint'),
+    
     w3cjs = require('gulp-w3cjs'),
     compass = require('gulp-compass'),
     connect = require('gulp-connect'),
@@ -85,7 +85,7 @@ function server() {
         // Read here http://www.browsersync.io/docs/options/
         proxy: url,
 
-         port: 55038,
+        port: 65153,
 
         // Tunnel the Browsersync server through a random Public URL
         // tunnel: true,
@@ -94,7 +94,7 @@ function server() {
         // tunnel: "ppress",
 
         // Inject CSS changes
-        injectChanges: false,
+        injectChanges: true,
 
     });
 

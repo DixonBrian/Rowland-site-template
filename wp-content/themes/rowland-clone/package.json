@@ -18,9 +18,9 @@
   },
   "devDependencies": {
     "@wordpress/scripts": "^12.1.0",
-    "browser-sync": "^2.26.12",
+    "browser-sync": "^2.27.9",
     "browserify": "^16.5.2",
-    "dir-archiver": "^1.1.1",g
+    "dir-archiver": "^1.1.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-browserify": "^0.5.1",
@@ -40,7 +40,7 @@
     "gulp-rename": "^2.0.0",
     "gulp-rimraf": "^1.0.0",
     "gulp-run-sequence": "^0.3.2",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^4.1.1",
     "gulp-sourcemap": "^1.0.1",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
@@ -48,8 +48,8 @@
     "gulp-zip": "^5.0.2",
     "jshint": "^2.12.0",
     "jshint-stylish": "^2.2.1",
-    "node-sass": "^4.14.1",
     "natives": "^1.1.6",
+    "node-sass": "^4.14.1",
     "rtlcss": "^2.5.0"
   },
   "rtlcssConfig": {
@@ -75,11 +75,14 @@
   },
   "dependencies": {
     "@splidejs/splide": "^2.4.21",
-    "foundation-sites": "^6.6.3",
-    "gulp": "^4.0.2",
+    "foundation": "^4.2.1-1",
+    "foundation-sites": "^6.7.4",
     "gulp-if": "^3.0.0",
     "gulp-uglifycss": "^1.1.0",
+    "gulp-util": "^3.0.8",
+    "i": "^0.3.7",
     "imagemin": "^7.0.1",
-    "tslint-stylish": "^2.1.0"
+    "tslint-stylish": "^2.1.0",
+    "w3cjs": "^0.4.0"
   }
 }
