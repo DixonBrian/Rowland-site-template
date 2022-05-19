@@ -29,6 +29,12 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+        <!---------------- Jquery scripts ---------------->
+      
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 
+    <script src="/wp-content/themes/rowland-clone/builds/production/js/foundation.min.js"></script>
 </body>
 </html>

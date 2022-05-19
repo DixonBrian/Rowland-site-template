@@ -140,7 +140,7 @@ add_action( 'widgets_init', 'rowland_clone_widgets_init' );
 function rowland_clone_scripts() {
 	wp_enqueue_style( 'rowland-clone-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'rowland-clone-style', 'rtl', 'replace' );
-	wp_enqueue_style( 'palmer-new-main', '/wp-content/themes/rowland-clone/builds/development/css/style.css', array(), _S_VERSION );
+	wp_enqueue_style( 'Rowland-new-main', '/wp-content/themes/rowland-clone/builds/development/css/style.css', array(), _S_VERSION );
     	wp_deregister_script('jquery');
 	wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', array(), null, true);    
 	wp_enqueue_script( 'rowland-clone-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
@@ -219,4 +219,21 @@ add_filter( 'wpseo_opengraph_url', 'my_opengraph_url' );
 function my_opengraph_url( $url ) {
     global $post;
         return 'https://NEED--TO--CHANGE--TO--SITE--URL/' . $post->post_name;
+}
+
+/** Create Theme Options pages for ACF fields to live on in menu */
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page( array(
+		'page_title'  => 'Theme Options',
+		'menu_title'  => 'Theme Options',
+		'menu_slug'   => 'theme-options',
+		'capability'  => 'edit_posts',
+		'parent_slug' => '',
+		'position'    => false
+	) ); 
+	acf_add_options_sub_page( array(
+		'page_title'  => 'Theme Header Settings',
+		'menu_title'  => 'Header',
+		'parent_slug' => 'theme-options',
+	) );
 }
