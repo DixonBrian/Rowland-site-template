@@ -1,0 +1,236 @@
+    .fancybox-caption .fancybox-caption__body {
+        @include font-size-22-rg;
+    }
+
+    section.page-info {
+        .top-pattern {
+            background-image: url('/wp-content/themes/palmer-museum/assets/images/top_pattern.svg');
+            position: absolute;
+            top: 0px;
+            right: -50px;
+            display: block;
+            height: 1044px;
+            width: 1399px;
+        }
+    }
+
+    section#page-content {
+        position: relative;
+        z-index: 11;
+
+        .stripes {
+
+            .cta-stripe {
+                position: relative;
+                z-index: 9;
+                background-color: $PSUblue;
+
+                .grid-container {
+                    .grid-x {
+                        .cell.large-12 {
+                            @include font-size-55-lt;
+                            color: #fff;
+                            font-family: $body-font-family;
+
+                            p {
+                                margin: 45px 0;
+                                line-height: 50px;
+
+                                a {
+                                    color: #fff;
+                                    text-decoration-thickness: 3px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .image-copy-stripe {
+                position: relative;
+                z-index: 100;
+                margin-top: 30px;
+                margin-bottom: 30px;
+
+                .grid-container {
+                    .grid-x {
+                        .cell.large-12 {
+                            h2.section-header-title {
+                                @include font-size-68-rg;
+                                color: #000;
+                                font-family: $font-family;
+                                margin-bottom: 20px;
+                            }
+
+                            span.section-sub-title {
+                                @include font-size-24-rg;
+                                color: #000;
+                                font-family: $font-family;
+
+                                p {
+                                    width: 66%;
+                                    margin-bottom: 50px;
+                                }
+                            }
+                        }
+
+                        .copy-section {
+                            h3.copy-title {
+                                @include font-size-30-bld;
+                                color: #000;
+                                font-family: $font-family;
+                            }
+
+                            h4.copy-sub-title {
+                                @include font-size-22-rg;
+                                color: #000;
+                                font-family: $font-family;
+                                margin-top: 15px;
+                            }
+
+                            span p {
+                                @include font-size-18-rg;
+                                color: #000;
+                                font-family: $font-family;
+                            }
+
+                            a.copy-image-link.button {
+                                margin-top: 45;
+                            }
+                        }
+                    }
+                }
+            }
+
+            ._50-50-stripe {
+                position: relative;
+                z-index: 30;
+                margin-top: 30px;
+                padding-bottom: 30px;
+
+                .grid-container {
+                    .grid-x {
+                        .cell.large-12 {
+                            h2.section-header-title {
+                                @include font-size-68-rg;
+                                color: #000;
+                                font-family: $font-family;
+                                margin-bottom: 20px;
+                            }
+
+                            span.section-sub-title {
+                                @include font-size-24-rg;
+                                color: #000;
+                                font-family: $font-family;
+
+                                p {
+                                    width: 66%;
+                                    margin-bottom: 50px;
+                                }
+                            }
+                        }
+
+                        ._50-50-section {
+                            img {
+                                margin-bottom: 30px;
+                            }
+
+                            h3.copy-title {
+                                @include font-size-21-bld;
+                                color: #000;
+                                font-family: $font-family;
+                                margin-top: 7px;
+                                width: 75%;
+                            }
+
+                            hr._5050-tile {
+                                margin-top: 0px;
+                            }
+
+                            h4.copy-sub-title {
+                                @include font-size-18-rg;
+                                color: #000;
+                                font-family: $font-family;
+                                margin-top: 15px;
+                                width: 75%;
+                            }
+
+                            span p {
+                                @include font-size-16-rg;
+                                color: #000;
+                                font-family: $font-family;
+                                width: 80%;
+                                margin-bottom: 0;
+                            }
+
+                            a.copy-image-link.button {
+                                margin-top: 45px;
+                            }
+                        }
+                    }
+                }
+            }
+            .entry-block-stripe {
+                position: relative;
+                z-index: 100;
+                margin-top: 30px;
+                margin-bottom: 30px;
+
+                .grid-container .grid-x {
+                    .cell.large-12 {
+                        h2.section-header-title {
+                            @include font-size-68-rg;
+                            color: #000;
+                            font-family: $font-family;
+                        }
+
+                        span.section-sub-title {
+                            @include font-size-24-rg;
+                            color: #000;
+                            font-family: $font-family;
+                            display: block;
+                            width: 80%;
+                            margin-top: 15px;
+                            //* margin-bottom: 65px;
+                        }
+                    }
+
+                    .entry-1-card,
+                    .entry-2-card,
+                    .entry-3-card,
+                    .entry-4-card {
+                        margin-top: 60px;
+                        margin-bottom: 30px;
+
+                        h3.card-title {
+                            @include font-size-21-bld;
+                            color: #000;
+                            font-family: $font-family;
+                            margin-top: 20px;
+                        }
+
+                        span.card-content {
+                            @include font-size-16-rg;
+                            font-family: $font-family;
+                            color: #000;
+                        }
+
+                        a.copy-image-link.button {
+                            margin-top: 25px;
+                            margin-bottom: 0;
+                        }
+
+                        a img {
+                            object-fit: cover;
+                            max-height: 168px;
+                        }
+                    }
+                }
+            }
+            .full-width-image-stripe {
+                position: relative;
+                z-index: 100;
+
+            }
+        }
+    }

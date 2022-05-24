@@ -55,7 +55,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* Foundation */
 
 @import "../node_modules/foundation-sites/scss/foundation";
-
+@import "../node_modules/foundation-sites/scss/settings/settings";
 @include foundation-everything;
 
 
@@ -73,6 +73,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* Box sizing
 --------------------------------------------- */
 @import "generic/box-sizing";
+
+/* responsive media queries
+--------------------------------------------- */
+@import "utilities/custom_mixins";
 
 /*--------------------------------------------------------------
 # Base
@@ -109,10 +113,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* Alignments
 --------------------------------------------- */
 @import "utilities/alignments";
-
-/* responsive media queries
---------------------------------------------- */
-@import "utilities/custom_mixins";
 
 /* responsive media queries
 --------------------------------------------- */

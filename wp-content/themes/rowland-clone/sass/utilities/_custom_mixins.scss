@@ -236,3 +236,125 @@ $breakpoints_mq: (
     }
   }
 }
+
+// Typography Mixins 
+
+@mixin font-size-14-rg {
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 400;
+}
+
+@mixin font-size-14-smibld {
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+@mixin font-size-14-bld {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 800;
+}
+
+@mixin font-size-16-rg {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+@mixin font-size-16-semibld {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 600;
+}
+
+@mixin font-size-18-rg {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+@mixin font-size-20-semibld {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+@mixin font-size-21-bld {
+    font-size: 21px;
+    line-height: 25px;
+    font-weight: 800;
+}
+
+@mixin font-size-22-rg {
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+@mixin font-size-24-rg {
+    font-size: 24px;
+    line-height: 33px;
+    font-weight: 400;
+}
+
+@mixin font-size-26-bld {
+    font-size: 26px;
+    line-height: 30px;
+    font-weight: 800;
+}
+
+@mixin font-size-30-bld {
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 800;
+}
+
+@mixin font-size-55-lt {
+    font-size: 55px;
+    line-height: 50px;
+    font-weight: 200;
+}
+
+@mixin font-size-68-rg {
+    font-size: 68px;
+    line-height: 60px;
+    font-weight: 400;
+
+    @include mq('phone-wide', $type: max) {
+        font-size: 52px;
+        line-height: 50px;
+
+    }
+}
+
+@mixin font-size-68-bld {
+    font-size: 68px;
+    line-height: 60px;
+    font-weight: 800;
+
+    @include mq('phone-wide', $type: max) {
+        font-size: 55px;
+        line-height: 55px;
+        margin-bottom: 35px;
+    }
+}
+
+@mixin font-size-100-lt {
+    font-size: 100px;
+    line-height: 135px;
+    font-weight: 200;
+
+    @include mq('tablet', $type: max) {
+        font-size: 113px;
+        line-height: 120px;
+    }
+
+    @include mq('phone-wide', $type: max) {
+        font-size: 62px;
+        line-height: 72px;
+        margin-bottom: 5px;
+    }
+}
