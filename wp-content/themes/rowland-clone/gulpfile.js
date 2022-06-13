@@ -3,9 +3,9 @@ const gulp = require('gulp'),
     sass = require('gulp-sass'),
     sourcemaps = require("gulp-sourcemaps"),
     browserSync = require('browser-sync').create();
-    concat = require("gulp-concat"),
+concat = require("gulp-concat"),
     source = "./sass/";
-    sass.compiler = require('node-sass'),
+sass.compiler = require('node-sass'),
     gutil = require('gulp-util'),
     browserify = require('gulp-browserify'),
     stylish = require('jshint-stylish'),
@@ -13,9 +13,12 @@ const gulp = require('gulp'),
     compass = require('gulp-compass'),
     connect = require('gulp-connect'),
     gulpif = require('gulp-if'),
+    gulp_nano = require('gulp-cssnano'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     path = require('path');
+gulpif = require('gulp-if');
+autoprefixer = require('gulp-autoprefixer');
 
 var env,
     jsSources,
@@ -23,9 +26,9 @@ var env,
     outputDir,
     sassStyle;
 
-proxy = "http://localhost:52011",
-  
-url = 'http://bs-rowland-clone.lndo.site/ ', // Local Development URL for BrowserSync. Change as-needed.
+proxy = "http://localhost:64676",
+
+    url = 'http://bs-rowland-clone.lndo.site/ ', // Local Development URL for BrowserSync. Change as-needed.
 
     //define working envirnoment and compiling settings. Use developement or production
     env = 'development';
@@ -54,13 +57,16 @@ function styles() {
                 'sass/style.scss',
             ]
         }))
-        .pipe(sourcemaps.init())
+        .pipe(autoprefixer('last 2 versions'))
         .pipe(
             sass({
                 sourcemap: true,
                 outputStyle: sassStyle
             }).on("error", sass.logError)
         )
+        .pipe(sourcemaps.init())
+        .pipe(gulpif(env !== 'development', gulp_nano()))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(dest + "css"))
         .pipe(browserSync.stream());
 }
@@ -74,7 +80,7 @@ function server() {
         files: ['**/*.php', 'sass/**/*.scss', 'sass/**/**/**.scss', '**/*.scss'],
         // Read here http://www.browsersync.io/docs/options/
         proxy: proxy,
-        port: 52011,
+        port: 64676,
         // Tunnel the Browsersync server through a random Public URL
         // tunnel: true,
         // Attempt to use the URL "http://my-private-site.localtunnel.me"
