@@ -179,7 +179,7 @@
                 .grid-container .grid-x {
                     .cell.large-12 {
                         h2.section-header-title {
-                            @include font-size-68-rg;
+                            @include fluid-type(320px, 1600px, 36px, 58px);
                             color: #000;
                             font-family: $font-family;
                         }

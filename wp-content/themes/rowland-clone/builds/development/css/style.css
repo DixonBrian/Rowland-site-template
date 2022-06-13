@@ -7986,17 +7986,23 @@ section#page-content .stripes .entry-block-stripe {
 }
 
 section#page-content .stripes .entry-block-stripe .grid-container .grid-x .cell.large-12 h2.section-header-title {
-  font-size: 68px;
-  line-height: 60px;
-  font-weight: 400;
   color: #000;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
-@media only screen and (max-width: 480px) {
+section#page-content .stripes .entry-block-stripe .grid-container .grid-x .cell.large-12 h2.section-header-title {
+  font-size: 36px;
+}
+
+@media screen and (min-width: 320px) {
   section#page-content .stripes .entry-block-stripe .grid-container .grid-x .cell.large-12 h2.section-header-title {
-    font-size: 52px;
-    line-height: 50px;
+    font-size: calc(36px + 22 * ((100vw - 320px) / 1280));
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  section#page-content .stripes .entry-block-stripe .grid-container .grid-x .cell.large-12 h2.section-header-title {
+    font-size: 58px;
   }
 }
 
@@ -9148,3 +9154,128 @@ header#header.site-header .alert.non-emergency .minimize-alert .close-button:hov
 
 /* responsive media queries
 --------------------------------------------- */
+/* Medium and down */
+@media screen and (max-width: 1000px) {
+  #hero-banner .grid-x .cell .hero-text {
+    top: 207px;
+  }
+  /*********************** mobile menu ***********************/
+  header#header.site-header .alert.non-emergency .container {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+  header#header.site-header .alert.non-emergency .container .left-angle,
+  header#header.site-header .alert.non-emergency .container .right-angle {
+    display: inline-block;
+    flex: 0 9.4%;
+    -webkit-box-flex: 0;
+    height: 100%;
+    width: 100%;
+  }
+  header#header.site-header .alert.non-emergency .container .alert-message {
+    flex: 0 81%;
+  }
+  header#header.site-header .alert.non-emergency .container .left-angle {
+    order: 3;
+  }
+  header#header.site-header .alert.non-emergency .container .right-angle {
+    order: 5;
+  }
+  header#header.site-header .alert.non-emergency .container .date {
+    flex: 0 81%;
+    padding: 14px 0 14px 32px;
+  }
+  header#header.site-header .alert.non-emergency .container .minimize-alert {
+    flex: 0 14%;
+    order: 2;
+    -webkit-box-ordinal-group: 3;
+  }
+  header#header.site-header .alert.non-emergency .alert-message p {
+    padding-top: 30px;
+  }
+  header#header.site-header .alert.non-emergency .close-button {
+    right: 0em;
+  }
+  header#header.site-header .alert.non-emergency .minimize-alert {
+    flex: 0 83%;
+    order: 1;
+  }
+  header#header.site-header .alert.non-emergency .minimize-alert .close-button {
+    top: -7px;
+    position: relative;
+    float: initial;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header#header.site-header .alert.non-emergency .alert-message {
+    flex: 0 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header#header.site-header .alert.non-emergency .left-angle {
+    flex: 0 7%;
+    margin-left: auto;
+  }
+  header#header.site-header .alert.non-emergency .right-angle {
+    flex: 0 7%;
+    margin-right: auto;
+  }
+  header#header.site-header #emergency-banner .grid-container .align-center {
+    bottom: 0px;
+    height: 100%;
+  }
+  header#header.site-header #emergency-banner .grid-container {
+    height: 100%;
+    max-width: 786px;
+    position: sticky;
+  }
+  header#header.site-header #emergency-banner {
+    height: 100%;
+  }
+}
+
+/***** endo of medium and down ****/
+@media only screen and (max-width: 768px) {
+  /*********************** Header Styling ***********************/
+  header#header.site-header .alert.non-emergency .container {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+  header#header.site-header .alert.non-emergency .container .left-angle,
+  header#header.site-header .alert.non-emergency .container .right-angle {
+    display: inline-block;
+    flex: 0 9.7%;
+  }
+  header#header.site-header .alert.non-emergency .container .alert-message {
+    flex: 0 80.6%;
+  }
+}
+
+/**** endo of Tablet *****/
+/*********************** small and down ***********************/
+@media only screen and (max-width: 560px) {
+  header#header.site-header .alert.non-emergency .container {
+    max-width: 500px;
+  }
+  header#header.site-header .alert.non-emergency .container .left-angle,
+  header#header.site-header .alert.non-emergency .container .right-angle {
+    display: none;
+  }
+  header#header.site-header .alert.non-emergency .container .alert-message {
+    flex: 0 100%;
+  }
+  header#header.site-header .alert.non-emergency .container .minimize-alert {
+    order: 2;
+    flex: 0 22%;
+  }
+  header#header.site-header .alert.non-emergency .container .date {
+    order: 1;
+    flex: 0 50%;
+  }
+  header#header.site-header .alert.non-emergency .alert-message {
+    flex: 0 100%;
+    padding-right: 10px;
+  }
+}
+
+/**** Endo of Large Phone ****/

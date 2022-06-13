@@ -10,9 +10,6 @@
  */
 
 ?>
-<div class='bottom-pattern'> 
-
-</div>
     <footer id="colophon" class="site-footer">
         <section id="primary-footer" class="grid-container" >
              <div class='grid-x grid-padding-x '> 

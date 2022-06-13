@@ -1,0 +1,152 @@
+ /* Medium and down */
+ @media screen and (max-width: 1000px) {
+     #hero-banner .grid-x .cell .hero-text {
+         top: 207px;
+     }
+
+     /*********************** mobile menu ***********************/
+     header#header.site-header {
+         .alert.non-emergency {
+             .container {
+                 max-width: 768px;
+                 margin: 0 auto;
+
+                    .left-angle,
+                    .right-angle {
+                        display: inline-block;
+                        flex: 0 9.4%;
+                        -webkit-box-flex: 0;
+                        height: 100%;
+                        width: 100%;
+                    }
+
+                    .alert-message {
+                        flex: 0 81%;
+                    }
+
+                    .left-angle {
+                        order: 3;
+                    }
+
+                    .right-angle {
+                        order: 5;
+                    }
+
+                    .date {
+                        flex: 0 81%;
+                        padding: 14px 0 14px 32px;
+                    }
+
+                    .minimize-alert {
+                        flex: 0 14%;
+                        order: 2;
+                        -webkit-box-ordinal-group: 3;
+                    }
+                }
+            
+            .alert-message p {
+                padding-top: 30px;
+            }
+            .close-button {
+                right: 0em;
+            }
+            .minimize-alert {
+                flex: 0 83%;
+                order: 1;
+            }
+            .minimize-alert .close-button {
+                top: -7px;
+                position: relative;
+                float: initial;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .alert-message {
+                flex: 0 85%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .left-angle {
+                flex: 0 7%;
+                margin-left: auto;
+            }
+            
+            .right-angle {
+                flex: 0 7%;
+                margin-right: auto;
+            }
+
+        }
+                #emergency-banner .grid-container .align-center {
+                    bottom: 0px;
+                    height: 100%;
+                    ;
+                }
+        
+                #emergency-banner .grid-container {
+                    height: 100%;
+                    max-width: 786px;
+                    position: sticky;
+                }
+        
+                #emergency-banner {
+                    height: 100%;
+                }
+    }
+} /***** endo of medium and down ****/
+
+@include mq('tablet', $type: max) {
+
+    /*********************** Header Styling ***********************/
+    header#header.site-header .alert.non-emergency {
+        .container {
+            max-width: 768px;
+            margin: 0 auto;
+
+            .left-angle,
+            .right-angle {
+                display: inline-block;
+                flex: 0 9.7%;
+            }
+
+            .alert-message {
+                flex: 0 80.6%;
+            }
+        }
+    }
+} /**** endo of Tablet *****/
+
+/*********************** small and down ***********************/
+
+@include mq('phablet', $type: max) {
+
+    header#header.site-header .alert.non-emergency {
+        .container {
+            max-width: 500px;
+
+            .left-angle,
+            .right-angle {
+                display: none;
+            }
+
+            .alert-message {
+                flex: 0 100%;
+            }
+
+            .minimize-alert {
+                order: 2;
+                flex: 0 22%;
+            }
+
+            .date {
+                order: 1;
+                flex: 0 50%;
+            }
+        }
+    }
+
+    header#header.site-header .alert.non-emergency .alert-message {
+        flex: 0 100%;
+        padding-right: 10px;
+    }
+} /**** Endo of Large Phone ****/
