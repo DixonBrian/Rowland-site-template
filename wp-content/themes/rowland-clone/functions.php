@@ -230,10 +230,35 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'  => 'edit_posts',
 		'parent_slug' => '',
 		'position'    => false
-	) ); 
+	)); 
 	acf_add_options_sub_page( array(
 		'page_title'  => 'Theme Header Settings',
 		'menu_title'  => 'Header',
 		'parent_slug' => 'theme-options',
 	) );
+	acf_add_options_sub_page( array(
+		'page_title'  => 'Theme Footer Settings',
+		'menu_title'  => 'Footer',
+		'parent_slug' => 'theme-options',
+	) );
 }
+
+/*********************** Remove Post from admin menu ***********************/
+
+function post_remove ()      //creating functions post_remove for removing menu item
+{ 
+   remove_menu_page('edit.php');
+}
+
+add_action('admin_menu', 'post_remove');   //adding action for triggering function call
+
+/*********************** Add Super Menu ***********************/
+function wpb_custom_new_menu() {
+  register_nav_menus(
+    array(
+      'my-custom-menu' => __( 'Super-menu' ),
+      'extra-menu' => __( 'Extra Menu' )
+    )
+  );
+}
+add_action( 'init', 'wpb_custom_new_menu' );
