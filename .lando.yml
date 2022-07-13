@@ -1,0 +1,13 @@
+name: rowland-clone
+recipe: pantheon
+config:
+  framework: wordpress
+  site: rowland-clone
+  id: 628a79e7-0aca-4e10-8db4-b077a9909ec6
+proxy:
+  node:
+    - bs.rowland-clone.lindo.site:3000
+services:
+  node:
+    type: node
+    ssl: true

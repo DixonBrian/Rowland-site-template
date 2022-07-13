@@ -10,7 +10,7 @@
  * Plugin Name:       Accessibility Checker
  * Plugin URI:        https://a11ychecker.com
  * Description:       Audit and check your website for accessibility before you hit publish. In-post accessibility scanner and guidance.
- * Version:           1.2.8
+ * Version:           1.2.10
  * Author:            Equalize Digital
  * Author URI:        https://equalizedigital.com
  * License:           GPL-2.0+
@@ -69,7 +69,7 @@ if ( ! function_exists( 'edac_fs' ) ) {
 
 // Current plugin version
 if ( ! defined( 'EDAC_VERSION' ) ) {
-	define( 'EDAC_VERSION', '1.2.8' );
+	define( 'EDAC_VERSION', '1.2.10' );
 }
 
 // Current database version
@@ -953,26 +953,23 @@ function edac_details_ajax(){
 	
 	// sort error rules by count
 	usort($error_rules, function($a, $b) {
-		return $a['count'] < $b['count'];
+		
+		return $b['count'] <=> $a['count'];
+		
 	});
 
 	// sort warning rules by count
 	usort($warning_rules, function($a, $b) {
-		return $a['count'] < $b['count'];
+		
+		return $b['count'] <=> $a['count'];
+
 	});
 
 	// sort passed rules array by title
 	usort($passed_rules, function($a, $b) {
-		
-		// PHP 5.6
-		if ($a == $b) {
-			return 0;
-		}
-		return ($a < $b) ? -1 : 1;
-		
-		// PHP 7 with spaceship operator
-		//return $a['title'] <=> $b['title'];
-		
+
+		return $a['title'] <=> $b['title'];
+
 	});
 
 	// merge rule arrays together
@@ -1013,7 +1010,8 @@ function edac_details_ajax(){
 						$html .= '<span class="edac-details-rule-count-ignore">'.$count_ignored.'</span>';
 					}
 					$html .= esc_html($rule['title']);
-					$html .= '<a href="'.$tool_tip_link.'" class="edac-details-rule-information" target="_blank"><span class="dashicons dashicons-info"></span></a>';
+					//Can you please add an aria-label to the link "Read documentation for [rule name]"?
+					$html .= '<a href="'.$tool_tip_link.'" class="edac-details-rule-information" target="_blank" aria-label="Read documentation for '. esc_html($rule['title']).'"><span class="dashicons dashicons-info"></span></a>';
 					$html .= ($expand_rule) ? '<button class="edac-details-rule-title-arrow"><i class="dashicons dashicons-arrow-down-alt2"></i></button>' : '';
 
 				$html .= '</div>';
@@ -1158,7 +1156,9 @@ function edac_readability_ajax(){
 	$content = wp_filter_nohtml_kses($content);
 	$content = str_replace(']]>', ']]&gt;', $content);
 	$textStatistics = new TS\TextStatistics;
-	$post_grade = floor($textStatistics->fleschKincaidGradeLevel($content));
+	//$post_grade = floor($textStatistics->fleschKincaidGradeLevel($content));
+	$post_grade = get_post_meta($post_id, '_edac_summary', true);
+	$post_grade = $post_grade['readability'];
 	$post_grade_failed = ($post_grade > 9) ? true : false;
 	$simplified_summary_grade = edac_ordinal(floor($textStatistics->fleschKincaidGradeLevel($simplified_summary)));
 	$simplified_summary_grade_failed = ($simplified_summary_grade > 9) ? true : false;
@@ -1169,7 +1169,7 @@ function edac_readability_ajax(){
 		$html .=
 		 '<li class="edac-readability-list-item edac-readability-grade-level">
 			<span class="edac-readability-list-item-icon dashicons '.(($post_grade_failed || $post_grade == 0) ? 'dashicons-no-alt' : 'dashicons-saved').'"></span>
-			<p class="edac-readability-list-item-title">Post Reading Grade Level: <strong class="'.(($post_grade_failed || $post_grade == 0) ? 'failed-text-color' : 'passed-text-color').'">'.(( $post_grade == 0) ? 'None' : edac_ordinal($post_grade)).'</strong><br /></p>';
+			<p class="edac-readability-list-item-title">Post Reading Grade Level: <strong class="'.(($post_grade_failed || $post_grade == 0) ? 'failed-text-color' : 'passed-text-color').'">'.(( $post_grade == 0) ? 'None' : $post_grade).'</strong><br /></p>';
 			if($post_grade_failed){
 				$html .='<p class="edac-readability-list-item-description">Your post has a reading level higher than 9th grade. Web Content Accessibility Guidelines (WCAG) at the AAA level require a simplified summary of your post that is 9th grade or below.</p>';
 			}elseif($post_grade == 0){

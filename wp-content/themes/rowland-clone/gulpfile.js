@@ -26,9 +26,9 @@ var env,
     outputDir,
     sassStyle;
 
-proxy = "http://localhost:64676",
+proxy = "http://localhost:64909",
 
-    url = 'http://bs-rowland-clone.lndo.site/ ', // Local Development URL for BrowserSync. Change as-needed.
+    url = 'http://rowland-clone.lndo.site', // Local Development URL for BrowserSync. Change as-needed.
 
     //define working envirnoment and compiling settings. Use developement or production
     env = 'development';
@@ -80,7 +80,7 @@ function server() {
         files: ['**/*.php', 'sass/**/*.scss', 'sass/**/**/**.scss', '**/*.scss'],
         // Read here http://www.browsersync.io/docs/options/
         proxy: proxy,
-        port: 64676,
+        port: 64909,
         // Tunnel the Browsersync server through a random Public URL
         // tunnel: true,
         // Attempt to use the URL "http://my-private-site.localtunnel.me"
